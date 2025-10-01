@@ -1,0 +1,499 @@
+/* ImageToPdfConverter.css — MoZeus Branded */
+
+/* MoZeus Color Palette */
+:root {
+  --mozeus-navy: #0d1b3e;
+  --mozeus-green: #4ade80;
+  --mozeus-gray: #f3f4f6;
+  --mozeus-light-border: #e5e7eb;
+}
+
+/* Global background to match MoZeus navy */
+html, body {
+  background-color: #0d1b3e;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 16px auto; /* centers the logo & adds spacing below */
+  height: 125px;
+}
+
+.converter-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: var(--mozeus-navy);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(241, 3, 3, 0.1);
+  color: white;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  color: white;
+}
+
+.version-selector {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.version-label {
+  display: block;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.version-dropdown {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  background-color: white;
+  color: var(--mozeus-navy);
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.selection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.selection-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+.btn-container {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-primary {
+  background-color: var(--mozeus-green);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #45b66f;
+}
+
+.btn-primary:disabled {
+  background-color: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.btn-success {
+  background-color: var(--mozeus-green);
+  color: #0d1b3e;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #0cc751;
+}
+
+.btn-success:disabled {
+  background-color: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c;
+}
+
+.btn-link {
+  color: var(--mozeus-green);
+  background: none;
+  border: none;
+}
+
+.btn-link:hover {
+  color: #22c55e;
+  text-decoration: underline;
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.image-card {
+  position: relative;
+  border: 2px solid var(--mozeus-light-border);
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.image-card.selected {
+  border-color: var(--mozeus-green);
+}
+
+.image-preview {
+  width: 100%;
+  height: 128px;
+  object-fit: cover;
+}
+
+.selection-mark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: var(--mozeus-green);
+  color: white;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.image-name {
+  padding: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.alert-warning {
+  color: #854d0e;
+  margin-top: 8px;
+}
+
+.alert-danger {
+  color: #b91c1c;
+  margin-top: 8px;
+}
+
+.file-selection {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.tip-box {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #e6f9ed;
+  border-radius: 6px;
+  color: var(--mozeus-navy);
+  border: 1px solid var(--mozeus-green);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #93c5fd;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: var(--mozeus-green);
+}
+
+.tip-text {
+  font-size: 14px;
+}
+
+.code-sample {
+  background-color: #dbeafe;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.drop-zone {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 32px;
+  text-align: center;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.drop-zone.dragging {
+  border-color: var(--mozeus-green);
+  background-color: #ecfdf5;
+}
+
+.drop-zone-icon {
+  margin: 0 auto 8px;
+  color: #9ca3af;
+}
+
+.drop-zone-text {
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.drop-zone-subtext {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.selected-images {
+  margin-bottom: 24px;
+}
+
+.selected-images-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.selected-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.selected-image-card {
+  position: relative;
+}
+
+.selected-image {
+  width: 100%;
+  height: 128px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #ef4444;
+  color: white;
+  padding: 4px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.selected-image-card:hover .delete-btn {
+  opacity: 1;
+}
+
+.generate-btn-container {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.pdf-output {
+  background-color: var(--mozeus-gray);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid var(--mozeus-light-border);
+  color: var(--mozeus-navy);
+}
+
+.pdf-output-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--mozeus-navy);
+}
+
+.pdf-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--mozeus-gray);
+  padding: 12px;
+  border-radius: 6px;
+  cursor: move;
+}
+
+.pdf-file.dragging {
+  opacity: 0.5;
+}
+
+.pdf-file-icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  background-color: #fee2e2;
+  padding: 8px;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+.file-icon {
+  color: #b91c1c;
+}
+
+.file-name {
+  font-weight: 500;
+}
+
+.pdf-instructions {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+/* Delete button position adjustment */
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  z-index: 5;
+  color: #dc3545;
+}
+
+.delete-btn:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Rotation badge */
+.rotation-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 12px;
+  font-size: 0.8em;
+}
+
+/* Selected image style adjustments */
+.selected-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Improving the selected image card */
+.selected-image-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: white;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-image-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* PDF Preview Styles */
+.selected-pdfs {
+  margin-bottom: 24px;
+}
+
+.selected-pdfs-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.selected-pdf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.selected-pdf-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  position: relative;
+}
+
+.pdf-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pdf-icon {
+  color: #dc2626;
+  flex-shrink: 0;
+}
+
+.pdf-details {
+  flex-grow: 1;
+}
+
+.pdf-name {
+  font-weight: 500;
+  color: var(--mozeus-navy);
+  margin: 0 0 4px 0;
+}
+
+.pdf-size {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
