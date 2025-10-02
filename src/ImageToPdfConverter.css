@@ -497,3 +497,28 @@ html, body {
   color: #6b7280;
   margin: 0;
 }
+
+/* PDF Preview Styles */
+.pdf-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 128px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.pdf-preview-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.pdf-preview .pdf-icon,
+.pdf-preview-large .pdf-icon {
+  color: #dc2626;
+}
