@@ -259,11 +259,11 @@ export default function ImageToPdfConverter() {
   const generateStripLayout = async (pdf, imageDataUrls, config, pdfWidth, pdfHeight) => {
     const stripWidth = config.imageWidth; // 73mm
     const stripHeight = config.imageHeight; // 10mm
-    const bottomPadding = config.bottomPadding; // 33mm from bottom
+    const topPadding = config.bottomPadding; // 33mm from top (was bottom)
     const sideMargin = config.sideMargin; // 16mm from sides
 
-    // Calculate Y position (33mm from bottom)
-    const yPos = pdfHeight - bottomPadding - stripHeight;
+    // Calculate Y position (33mm from top)
+    const yPos = topPadding;
 
     // Position for left strip (16mm from left side)
     const leftXPos = sideMargin;
@@ -289,8 +289,12 @@ export default function ImageToPdfConverter() {
       ctx.fillStyle = 'white';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw the image stretched to fit the strip dimensions
-      ctx.drawImage(tempImg, 0, 0, canvas.width, canvas.height);
+      // Rotate 180 degrees and draw the image stretched to fit the strip dimensions
+      ctx.save();
+      ctx.translate(canvas.width / 2, canvas.height / 2);
+      ctx.rotate(Math.PI); // 180 degrees
+      ctx.drawImage(tempImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+      ctx.restore();
 
       const processedImageData = canvas.toDataURL('image/png', 1.0);
 
@@ -373,7 +377,7 @@ export default function ImageToPdfConverter() {
       });
 
       // Generate PDF using strip layout with processed image data
-      await generateStripLayout(pdf, imageDataUrls, currentConfig, pdfWidth, pdfHeight);
+      await generateStripLayout(pdf, imageDataUrls, currentConfig, pdfWidth, pdfHeight)
       
       // Convert PDF to blob for download and drag & drop
       const pdfBlob = pdf.output('blob');
